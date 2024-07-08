@@ -4,9 +4,8 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 const productRoutes = require("./Routes/productRoutes");
+const userRoutes = require("./Routes/userRoutes");
 
-
-// "mongodb+srv://manjarirathore1512:qojS21hvvtG8XGUw@cluster0.q50isny.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
@@ -17,6 +16,7 @@ mongoose
   });
 
 app.use('/api/products' , productRoutes)
+app.use('/api/Users' , userRoutes)
 
 app.listen(8086, () => {
   console.log("Server sarted at port 8086");
